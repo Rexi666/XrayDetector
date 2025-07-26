@@ -1,0 +1,48 @@
+alert:
+  enabled: true
+  blocks:
+    DIAMOND_ORE:
+      enabled: true
+      count: 5
+      name: "Diamond Ore"
+    ANCIENT_DEBRIS:
+      enabled: true
+      count: 3
+      name: "Ancient Debris"
+    GOLD_ORE:
+      enabled: true
+      count: 10
+      name: "Gold Ore"
+  cooldown: 60 # in seconds
+discord_hook:
+  enabled: false
+  DIAMOND_ORE:
+    enabled: true
+    url: "https://discord.com/api/webhooks/xxxxxxxx/yyyyyyyyyyyy"
+    avatar: 'https://www.spigotmc.org/data/resource_icons/123/123517.jpg?1742847968'
+    username: 'Xray Detector'
+    color_rgb: "8,139,168"
+    title: 'Xray Detection Alert'
+  ANCIENT_DEBRIS:
+    enabled: true
+    url: "https://discord.com/api/webhooks/xxxxxxxx/yyyyyyyyyyyy"
+    avatar: 'https://www.spigotmc.org/data/resource_icons/123/123517.jpg?1742847968'
+    username: 'Xray Detector'
+    color_rgb: "240,43,20"
+    title: 'Xray Detection Alert'
+  GOLD_ORE:
+    enabled: true
+    url: "https://discord.com/api/webhooks/xxxxxxxx/yyyyyyyyyyyy"
+    avatar: 'https://www.spigotmc.org/data/resource_icons/123/123517.jpg?1742847968'
+    username: 'Xray Detector'
+    color_rgb: "194,189,4"
+    title: 'Xray Detection Alert'
+  message: |
+    🗨️ **Player:** %player%
+    🌍 **Block:** %count% %block% in less than 60 seconds.
+messages:
+  no_permission: "&cYou do not have permission to use this command."
+  usage: "Usage: /xraydetector reload"
+  config_reloaded: "&aConfiguration reloaded successfully."
+  alert: "&d&lXRAY ALERT » &fPlayer %player% mined %count% %block%"
+  webhook_error: "&cError sending webhook message"

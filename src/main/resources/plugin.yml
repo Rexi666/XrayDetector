@@ -2,3 +2,7 @@ name: XrayDetector
 version: '1.0'
 main: org.rexi.xrayDetector.XrayDetector
 api-version: '1.18'
+commands:
+  xraydetector:
+    description: 'Reload XrayDetector configuration'
+    usage: '/xraydetector reload'
