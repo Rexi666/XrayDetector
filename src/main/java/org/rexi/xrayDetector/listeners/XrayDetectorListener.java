@@ -31,6 +31,10 @@ public class XrayDetectorListener implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
+        if (player.hasPermission("xraydetector.bypass")) {
+            return;
+        }
+
         UUID playerId = player.getUniqueId();
         Material blockType = event.getBlock().getType();
         long currentTime = System.currentTimeMillis();
@@ -39,9 +43,9 @@ public class XrayDetectorListener implements Listener {
 
         int resettime = plugin.getConfig().getInt("alert.cooldown", 60);
 
-        resettime = resettime*1000;
+        int resettimeformatted = resettime*1000;
 
-        if (currentTime - lastMineTime.get(playerId) > resettime) {
+        if (currentTime - lastMineTime.get(playerId) > resettimeformatted) {
             ancientDebrisCount.put(playerId, 0);
             goldCount.put(playerId, 0);
             diamondCount.put(playerId, 0);
@@ -61,7 +65,7 @@ public class XrayDetectorListener implements Listener {
                     }
                     if (plugin.getConfig().getBoolean("discord_hook.ANCIENT_DEBRIS.enabled") &&
                             plugin.getConfig().getBoolean("discord_hook.enabled")) {
-                        XRayManager.sendAncientAlert(player.getName(), count_ancient);
+                        XRayManager.sendAncientAlert(player.getName(), count_ancient, resettime);
                     }
                 }
                 break;
@@ -77,7 +81,7 @@ public class XrayDetectorListener implements Listener {
                     }
                     if (plugin.getConfig().getBoolean("discord_hook.GOLD_ORE.enabled") &&
                             plugin.getConfig().getBoolean("discord_hook.enabled")) {
-                        XRayManager.sendGoldAlert(player.getName(), count_gold);
+                        XRayManager.sendGoldAlert(player.getName(), count_gold, resettime);
                     }
                 }
                 break;
@@ -93,7 +97,7 @@ public class XrayDetectorListener implements Listener {
                     }
                     if (plugin.getConfig().getBoolean("discord_hook.DIAMOND_ORE.enabled") &&
                             plugin.getConfig().getBoolean("discord_hook.enabled")) {
-                        XRayManager.sendDiamondAlert(player.getName(), count_diamond);
+                        XRayManager.sendDiamondAlert(player.getName(), count_diamond, resettime);
                     }
                 }
                 break;

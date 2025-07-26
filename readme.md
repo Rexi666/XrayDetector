@@ -4,3 +4,4 @@
 ### PERMISSIONS:
 - `xraydetector.reload` - Allows the user to reload the X-Ray Detector configuration.
 - `xraydetector.staff` - Allows the user to see the X-Ray Detector alerts.
+- `xraydetector.bypass` - Allows the user to bypass the X-Ray Detector checks.

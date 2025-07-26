@@ -39,10 +39,11 @@ discord_hook:
     title: 'Xray Detection Alert'
   message: |
     🗨️ **Player:** %player%
-    🌍 **Block:** %count% %block% in less than 60 seconds.
+    🌍 **Block:** %count% %block%
+    🕙 **Time:** in less than %time% seconds.
 messages:
   no_permission: "&cYou do not have permission to use this command."
   usage: "Usage: /xraydetector reload"
   config_reloaded: "&aConfiguration reloaded successfully."
-  alert: "&d&lXRAY ALERT » &fPlayer %player% mined %count% %block%"
+  alert: "&d&lXRAY ALERT » &f%player% mined %count% %block%"
   webhook_error: "&cError sending webhook message"

@@ -14,7 +14,7 @@ public class XRayManager {
 
     int[] colorRGB = new int[]{240, 43, 20};
 
-    public void sendAncientAlert(String playerName, int count) {
+    public void sendAncientAlert(String playerName, int count, int resetTime) {
         String webhookUrl = plugin.getConfig().getString("discord_hook.ANCIENT_DEBRIS.url", null);
         if (webhookUrl == null || webhookUrl.isEmpty()) {
             System.err.println(plugin.getMessage("webhook_error"));
@@ -32,11 +32,12 @@ public class XRayManager {
         String msg = raw
                 .replace("%player%", playerName)
                 .replace("%count%", String.valueOf(count))
-                .replace("%block%", blockName);
+                .replace("%block%", blockName)
+                .replace("%time%", String.valueOf(resetTime));
         send(msg, webhookUrl, avatarUrl, username, colorRGB, thumbnailUrl, title);
     }
 
-    public void sendDiamondAlert(String playerName, int count) {
+    public void sendDiamondAlert(String playerName, int count, int resetTime) {
         String webhookUrl = plugin.getConfig().getString("discord_hook.DIAMOND_ORE.url", null);
         if (webhookUrl == null || webhookUrl.isEmpty()) {
             System.err.println(plugin.getMessage("webhook_error"));
@@ -54,11 +55,12 @@ public class XRayManager {
         String msg = raw
                 .replace("%player%", playerName)
                 .replace("%count%", String.valueOf(count))
-                .replace("%block%", blockName);
+                .replace("%block%", blockName)
+                .replace("%time%", String.valueOf(resetTime));
         send(msg, webhookUrl, avatarUrl, username, colorRGB, thumbnailUrl, title);
     }
 
-    public void sendGoldAlert(String playerName, int count) {
+    public void sendGoldAlert(String playerName, int count, int resetTime) {
         String webhookUrl = plugin.getConfig().getString("discord_hook.GOLD_ORE.url", null);
         if (webhookUrl == null || webhookUrl.isEmpty()) {
             System.err.println(plugin.getMessage("webhook_error"));
@@ -76,7 +78,8 @@ public class XRayManager {
         String msg = raw
                 .replace("%player%", playerName)
                 .replace("%count%", String.valueOf(count))
-                .replace("%block%", blockName);
+                .replace("%block%", blockName)
+                .replace("%time%", String.valueOf(resetTime));
         send(msg, webhookUrl, avatarUrl, username, colorRGB, thumbnailUrl, title);
     }
 
