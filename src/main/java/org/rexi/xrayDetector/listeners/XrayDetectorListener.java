@@ -31,6 +31,12 @@ public class XrayDetectorListener implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
+
+        String worldName = player.getWorld().getName();
+        if (plugin.getConfig().getStringList("blacklist_worlds").contains(worldName)) {
+            return; // No hacer nada si el mundo está en la lista negra
+        }
+
         if (player.hasPermission("xraydetector.bypass")) {
             return;
         }

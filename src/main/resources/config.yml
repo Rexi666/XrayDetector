@@ -1,3 +1,7 @@
+# no alerts on these worlds
+blacklist_worlds:
+  - lobby
+
 alert:
   enabled: true
   blocks:
